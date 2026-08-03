@@ -104,10 +104,39 @@ public class EmployeeController {
 
    @PostMapping("/status/{status}")
    @ApiOperation("启用禁用员工账号")
+   //@PathVariable 的作用是把 URL 路径中的 {status} 占位符的值，自动绑定到方法参数上。
    public Result startOrStop(@PathVariable Integer status,Long id){
        log.info("启用禁用员工账号：{}，{}",status,id);
        employeeService.startOrStop(status,id);
        return  Result.success();
 
    }
+
+
+    /**
+     * 根据id查询员工信息
+     * @return
+     */
+   @GetMapping("/{id}")
+   @ApiOperation("根据id查询员工信息")
+   public Result<Employee> getById(@PathVariable Long id){
+   Employee employee = employeeService.getById(id);
+   return Result.success(employee);
+   }
+
+
+    /**
+     * 修改员工信息
+     * @return
+     */
+
+
+    @PutMapping// @RequestBody — 从请求体取值（JSON → DTO 对象）
+    @ApiOperation("修改员工信息")
+    public Result updata(@RequestBody EmployeeDTO employeeDTO){
+        log.info("编辑员工信息");
+        employeeService.update(employeeDTO);
+       return Result.success();
+    }
+
 }
