@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+//菜品类
 @Data
 public class DishDTO implements Serializable {
 

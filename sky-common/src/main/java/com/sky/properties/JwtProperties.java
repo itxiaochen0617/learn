@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "sky.jwt")
+//读取 yml/properties 配置文件中前缀为sky.jwt的配置，自动绑定到类的成员变量
 @Data
 public class JwtProperties {
 
